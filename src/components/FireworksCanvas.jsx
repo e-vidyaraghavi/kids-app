@@ -82,12 +82,17 @@ export default function FireworksCanvas({ trigger }) {
     return () => cancelAnimationFrame(animFrameRef.current)
   }, [])
 
-  // When a new keypress comes in (trigger changes), add a burst
+  // When a new keypress / tap comes in (trigger.id changes), add a burst.
+  // If trigger.x / trigger.y are provided (tap), burst at that spot; else random.
   useEffect(() => {
-    if (!trigger) return
+    if (!trigger || !trigger.id) return
     const canvas = canvasRef.current
-    const x = Math.random() * canvas.width
-    const y = Math.random() * canvas.height * 0.7  // keep in upper 70%
+    const x = typeof trigger.x === 'number'
+      ? trigger.x
+      : Math.random() * canvas.width
+    const y = typeof trigger.y === 'number'
+      ? trigger.y
+      : Math.random() * canvas.height * 0.7  // keep in upper 70%
     particlesRef.current.push(...createBurst(x, y, 80))
   }, [trigger])
 

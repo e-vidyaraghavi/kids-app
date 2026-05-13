@@ -20,6 +20,10 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
+  /* Mobile: disable double-tap zoom & callout, allow taps to register instantly */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 /* The hint shown before any typing */

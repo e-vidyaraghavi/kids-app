@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/App.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1778691017866,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1778691017866,
+            "name": "Commit-0",
+            "content": "import { useState, useEffect, useCallback } from 'react'\nimport FireworksCanvas from './components/FireworksCanvas'\nimport LetterDisplay from './components/LetterDisplay'\nimport { playPop } from './sounds'\nimport './App.css'\n\nexport default function App() { \n  // letters = array of all typed characters shown on screen\n  const [letters, setLetters] = useState([])\n  // trigger = object {id, x?, y?} — id changes each event; x/y optional tap coords\n  const [trigger, setTrigger] = useState({ id: 0 })\n\n  const fire = useCallback((x, y) => {\n    playPop()\n    setTrigger(prev => ({ id: prev.id + 1, x, y }))\n  }, [])\n\n  const handleKeyDown = useCallback((e) => {\n    // Prevent browser shortcuts (F5 = reload, F11 = fullscreen, etc.)\n    // from doing their default browser action while the app is focused\n    if (e.key.startsWith('F') && e.key.length <= 3) e.preventDefault()\n\n    // Every key (letters, numbers, space, F-keys, arrows, Enter…)\n    // triggers a firework burst and a sound\n    const isModifierOnly = ['Control', 'Alt', 'Meta', 'Shift',\n                            'CapsLock', 'NumLock', 'ScrollLock'].includes(e.key)\n    if (!isModifierOnly) {\n      fire()\n    }\n\n    // Only A–Z (upper or lower) get shown on screen\n    if (/^[a-zA-Z]$/.test(e.key)) {\n      setLetters(prev => [...prev, e.key.toUpperCase()])\n    }\n\n    // Backspace removes the last displayed letter\n    if (e.key === 'Backspace') {\n      setLetters(prev => prev.slice(0, -1))\n    }\n  }, [fire])\n\n  useEffect(() => {\n    window.addEventListener('keydown', handleKeyDown)\n    return () => window.removeEventListener('keydown', handleKeyDown)\n  }, [handleKeyDown])\n\n  // Tap / click anywhere: fire at the tap position (mobile + desktop).\n  // Ignore taps on interactive UI onPointerDown={handlePointerDown}>\n      {/* Layer 1: Fireworks (behind everything) */}\n      <FireworksCanvas trigger={trigger} />\n\n      {/* Layer 2: Typed letters (in front of fireworks) */}\n      <LetterDisplay letters={letters} />\n\n      {/* Layer 3: UI controls (on top) */}\n      <div className=\"ui-overlay\">\n        {letters.length === 0 && (\n          <div className=\"hint\">\n            <p>⌨️ Start typing or tap!</p>\n            <p className=\"hint-sub\">Every key & tapng) */}\n      <FireworksCanvas trigger={trigger} />\n\n      {/* Layer 2: Typed letters (in front of fireworks) */}\n      <LetterDisplay letters={letters} />\n\n      {/* Layer 3: UI controls (on top) */}\n      <div className=\"ui-overlay\">\n        {letters.length === 0 && (\n          <div className=\"hint\">\n            <p>⌨️ Start typing!</p>\n            <p className=\"hint-sub\">Every key makes fireworks & sounds! 🎆🔊</p>\n          </div>\n        )}\n        {letters.length > 0 && (\n          <button className=\"clear-btn\" onClick={handleClear}>\n            🗑️ Clear\n          </button>\n        )}\n      </div>\n    </div>\n  )\n}\n"
+        }
+    ]
+}

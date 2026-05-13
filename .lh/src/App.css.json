@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/App.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1778691019551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1778691019551,
+            "name": "Commit-0",
+            "content": "/* Pop-in animation for each new letter */\n@keyframes popIn {\n  0%   { transform: scale(0) rotate(-15deg); opacity: 0; }\n  100% { transform: scale(1) rotate(0deg);   opacity: 1; }\n}\n\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  background: #000;\n  overflow: hidden;    /* no scrollbars — full screen experience */\n  user-select: none;   /* stops text selection while typing */\n}\n\n.app-container {\n  width: 100vw;\n  height: 100vh;\n  position: relative;\n  /* Mobile: disable double-tap zoom & callout, allow taps to register instantly */\n  touch-action: manipulation;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-touch-callout: none;\n}\n\n/* The hint shown before any typing */\n.ui-overlay {\n  position: fixed;\n  bottom: 30px;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  z-index: 10;\n  pointer-events: none;\n}\n\n.hint {\n  text-align: center;\n  pointer-events: none;\n  animation: pulse 2s ease-in-out infinite;\n}\n\n.hint p {\n  font-size: 2.5rem;\n  font-weight: 900;\n  color: #fff;\n  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;\n  text-shadow: 0 0 20px rgba(255,255,255,0.8);\n}\n\n.hint-sub {\n  font-size: 1.4rem !important;\n  color: #ffdd44 !important;\n  margin-top: 8px;\n}\n\n@keyframes pulse {\n  0%, 100% { opacity: 1; transform: scale(1); }\n  50%       { opacity: 0.6; transform: scale(1.05); }\n}\n\n/* Clear button */\n.clear-btn {\n  pointer-events: all;\n  background: rgba(255, 60, 60, 0.85);\n  color: white;\n  border: none;\n  border-radius: 50px;\n  padding: 14px 32px;\n  font-size: 1.4rem;\n  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;\n  font-weight: bold;\n  cursor: pointer;\n  box-shadow: 0 0 20px rgba(255, 60, 60, 0.7);\n  transition: transform 0.15s, box-shadow 0.15s;\n}\n\n.clear-btn:hover {\n  transform: scale(1.1);\n  box-shadow: 0 0 30px rgba(255, 60, 60, 0.9);\n}\n\n.clear-btn:active {\n  transform: scale(0.95);\n}\n"
+        }
+    ]
+}
