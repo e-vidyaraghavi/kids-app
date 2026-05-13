@@ -1,0 +1,84 @@
+/* Pop-in animation for each new letter */
+@keyframes popIn {
+  0%   { transform: scale(0) rotate(-15deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  overflow: hidden;    /* no scrollbars — full screen experience */
+  user-select: none;   /* stops text selection while typing */
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* The hint shown before any typing */
+.ui-overlay {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hint {
+  text-align: center;
+  pointer-events: none;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hint p {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+  text-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+.hint-sub {
+  font-size: 1.4rem !important;
+  color: #ffdd44 !important;
+  margin-top: 8px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* Clear button */
+.clear-btn {
+  pointer-events: all;
+  background: rgba(255, 60, 60, 0.85);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-size: 1.4rem;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 60, 60, 0.7);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.clear-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 60, 60, 0.9);
+}
+
+.clear-btn:active {
+  transform: scale(0.95);
+}
