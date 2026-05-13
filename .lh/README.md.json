@@ -1,0 +1,18 @@
+{
+    "sourceFile": "README.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1778650851798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1778650851798,
+            "name": "Commit-0",
+            "content": "# Kids Typing Fireworks 🎆\n\nA toddler-friendly React app where every keystroke triggers a colorful fireworks animation on screen. Big, bold letters appear as kids type — turning the keyboard into a fun toy.\n\n## 🌐 Live Demo\n\n**https://e-vidyaraghavi.github.io/kids-app/**\n\n## Tech Stack\n\n- **React** — UI framework\n- **Vite** — build tool & dev server\n- **Canvas API** — firework particle animations\n- **GitHub Pages + Actions** — hosting & CI/CD\n\n## Getting Started\n\n```bash\n# Install dependencies\nnpm install\n\n# Start dev server\nnpm run dev\n\n# Build for production\nnpm run build\n\n# Preview production build\nnpm run preview\n```\n\n## Project Structure\n\n```\nsrc/\n├── App.jsx              # Root component\n├── main.jsx             # Entry point\n├── sounds.js            # Sound effects\n└── components/\n    ├── FireworksCanvas.jsx\n    └── LetterDisplay.jsx\n```\n\n## Deployment\n\nPushes to `main` automatically build and deploy to GitHub Pages via the workflow in [.github/workflows/deploy.yml](.github/workflows/deploy.yml).\n\nSee [PLAN.md](PLAN.md) for the full feature roadmap.\n"
+        }
+    ]
+}
